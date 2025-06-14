@@ -1,0 +1,2289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tools Guide | NXXXX</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .main-header {
+            background: linear-gradient(135deg, #305ec2, #022e8b);
+            color: white;
+            padding: 32px;
+            border-radius: 16px;
+            margin-bottom: 32px;
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.2);
+            text-align: center;
+        }
+        
+        .main-header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        
+        .main-header p {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+        
+        .category-section {
+            margin-bottom: 40px;
+        }
+        
+        .category-header {
+            background: linear-gradient(135deg,  #667eea, #764ba2);
+            color: white;
+            padding: 20px 24px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 12px rgba(66, 133, 244, 0.2);
+        }
+        
+        .category-header h2 {
+            font-size: 22px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        
+        .category-header::before {
+            content: "";
+            width: 24px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            margin-right: 12px;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 20px;
+        }
+        
+        .tool-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e1e5e9;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin-bottom: 20px;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+        }
+        
+        .tool-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .tool-icon {
+            width: 24px;
+            height: 24px;
+            background: #764ba2;
+            border-radius: 6px;
+            margin-right: 12px;
+        }
+        
+        .tool-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #5a67d8;
+        }
+        
+        .tool-description {
+            color: #6b7280;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .advantages {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 8px;
+            padding: 16px;
+        }
+        
+        .limitations {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-radius: 8px;
+            padding: 16px;
+        }
+        
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .advantages .section-title {
+            color: #059669;
+        }
+        
+        .limitations .section-title {
+            color: #dc2626;
+        }
+        
+        .section-title::before {
+            content: "";
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            border-radius: 3px;
+        }
+        
+        .advantages .section-title::before {
+            background: #10b981;
+        }
+        
+        .limitations .section-title::before {
+            background: #ef4444;
+        }
+        
+        .feature-list {
+            list-style: none;
+        }
+        
+        .feature-list li {
+            font-size: 13px;
+            line-height: 1.4;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .feature-list li::before {
+            content: "✓";
+            color: #10b981;
+            font-weight: bold;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        
+        .limitations .feature-list li::before {
+            content: "⚠";
+            color: #ef4444;
+        }
+        
+        .advantages .feature-list li {
+            color: #065f46;
+        }
+        
+        .limitations .feature-list li {
+            color: #991b1b;
+        }
+        
+        .use-cases {
+            background: #fffbeb;
+            border: 1px solid #fed7aa;
+            border-radius: 8px;
+            padding: 16px;
+        }
+        
+        .use-cases .section-title {
+            color: #d97706;
+        }
+        
+        .use-cases .section-title::before {
+            background: #f59e0b;
+        }
+        
+        .use-cases p {
+            font-size: 13px;
+            color: #92400e;
+            line-height: 1.4;
+        }
+        .toc {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        
+        .toc h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        
+        .toc ul {
+            list-style: none;
+        }
+        
+        .toc li {
+            margin: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .toc li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-size: 0.8em;
+            top: 2px;
+        }
+        
+        .toc a {
+            color: #495057;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: block;
+        }
+        
+        .toc a:hover {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            transform: translateX(5px);
+        }
+         .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+        
+        
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+      
+        @media (max-width: 500px) {
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .toc {
+                padding: 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-button">← Home</a>
+
+    <div class="container">
+
+        <div class="main-header">
+            <h1>AI Tools for Daily Work</h1>
+        </div>
+        <div class="toc">
+                <h2>Table of Contents</h2>
+                <ul>
+                        <li><a href="#note-taking">1. Note-Taking and Meeting Management</a></li>
+                        <li><a href="#data-analysis">2. Data Analysis and Automation</a></li>
+                        <li><a href="#writing">3. Writing, Summarization, and Translation</a></li>
+                        <li><a href="#design">4. Design, Creativity, and Presentations</a></li>
+                        <li><a href="#search">5. Search, Content Organization, and Productivity</a></li>
+                        <li><a href="#audio">6. Audio and Voice Editing</a></li>
+                        <li><a href="#workflow">7. Workflow Automation</a></li>
+                        <li><a href="#specialized">8. Specialized Tools</a></li>
+                        <li><a href="#virtual-assistants">9. Virtual Assistants - Conversational AI</a></li>
+                        <li><a href="#image-video">10. Image and Video Generation</a></li>
+                        <li><a href="#coding">11. Coding and Assisted Development</a></li>
+                </ul>
+            </div>
+
+        <!-- 1- Note-Taking and Meeting Management -->
+         <div id="note-taking" class="category-section">
+            <div class="category-header">
+                <h2>1. Note-Taking and Meeting Management</h2>
+            </div>
+                 
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon"></div>
+                        <div class="tool-name"><a href="https://www.Fireflies.ai">Fireflies.ai</a></div>
+                    </div>
+                    <p class="tool-description">AI meeting assistant that records, transcribes, and analyzes conversations automatically.</p>
+                    
+                    <div class="features-grid">
+                        <div class="advantages">
+                            <div class="section-title">Advantages</div>
+                            <ul class="feature-list">
+                                <li>Automatically joins meetings and transcribes conversations.</li> 
+                                <li>Allows keyword search and collaboration through notes.</li>
+                                <li>Integrates with popular platforms like Zoom and Google Meet.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="limitations">
+                            <div class="section-title">Limitations</div>
+                            <ul class="feature-list">
+                                <li>Interface can feel a bit cluttered for new users.</li>
+                                <li>Transcription accuracy is around 90% and may struggle with accents or background noise.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="use-cases">
+                        <div class="section-title">Use Cases</div>
+                        <p>Meeting Transcription & Summarization, Searchable Meeting Records, Collaboration & Follow-Ups, CRM Integration & Productivity, Voice Command Notes.</p>
+                    </div>
+                </div>
+             
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon"></div>
+                        <div class="tool-name"><a href="https://www.otter.ai">Otter.ai</a></div>
+                    </div>
+                    <p class="tool-description">Real-time transcription tool with speaker identification and calendar integration for seamless meeting capture.</p>
+                    
+                    <div class="features-grid">
+                        <div class="advantages">
+                            <div class="section-title">Advantages</div>
+                            <ul class="feature-list">
+                                <li>Real-time transcription with speaker identification.</li>
+                                <li>Integration with calendars and video conferencing platforms.</li>
+                                <li>Collaboration features and organized note-taking.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="limitations">
+                            <div class="section-title">Limitations</div>
+                            <ul class="feature-list">
+                                <li>Transcription accuracy ranges from 75%–85%, especially in noisy environments.</li>
+                                <li>Limited to English, Spanish, and French.</li>
+                                <li>Some concerns around data privacy.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="use-cases">
+                        <div class="section-title">Use Cases</div>
+                        <p>Meeting Transcription & Summarization, Searchable Meeting Records, Collaboration & Follow-Ups.</p>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon"></div>
+                        <div class="tool-name"><a href="https://www.tldv.io">tl;dv</a></div>
+                    </div>
+                    <p class="tool-description">AI meeting tool that records, summarizes, and creates highlight clips from video calls on platforms like Zoom and Google Meet.</p>
+                    
+                    <div class="features-grid">
+                        <div class="advantages">
+                            <div class="section-title">Advantages</div>
+                            <ul class="feature-list">
+                                <li>Automatically records and summarizes video calls.</li>
+                                <li>Creates highlight clips to share key moments.</li>
+                                <li>Streamlines meeting documentation.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="limitations">
+                            <div class="section-title">Limitations</div>
+                            <ul class="feature-list">
+                                <li>Summaries may require manual review for accuracy.</li>
+                                <li>Some advanced features may require a paid subscription.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="use-cases">
+                        <div class="section-title">Use Cases</div>
+                        <p>Meeting Transcription & Summarization, Collaboration & Follow-Ups, Voice Command Notes.</p>
+                    </div>
+                </div>  
+        </div>
+
+        <!-- 2 - Data Analysis and Automation -->
+        <div id="data-analysis" class="category-section">
+            <div class="category-header">
+                <h2>2. Data Analysis and Automation</h2>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://monkeylearn.com/">MonkeyLearn</a></div>
+                </div>
+                <p class="tool-description">No-code platform for text analysis, including classification, sentiment detection, and keyword extraction with built-in dashboards.</p>
+                
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>No coding required for text analysis.</li>
+                            <li>Offers classification, keyword extraction, and sentiment analysis.</li>
+                            <li>Includes integrated visual dashboards.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>May require initial setup to tailor it to specific needs.</li>
+                            <li>Some advanced features may be limited in the free plan.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Survey Analysis, Support Ticket Classification, Customer Feedback Monitoring, Sentiment Analysis.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://www.obviously.ai/">Obviously.ai</a></div>
+                </div>
+                <p class="tool-description">No-code tool to build predictive models for regression, classification, and forecasting by simply uploading a CSV file.</p>
+                
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Code-free predictive model generation.</li>
+                            <li>Perfect for analysts without technical backgrounds.</li>
+                            <li>Fast setup and quick results.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>May not be suitable for very large or complex datasets.</li>
+                            <li>Less customizable than open-source solutions.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Sales Forecasting, Customer Churn Prediction, Lead Scoring, Campaign Effectiveness Analysis.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://powerbi.microsoft.com"> Power BI + Copilot </a></div>
+                </div>
+                <p class="tool-description">Natural language interface in Power BI to explore data, generate visualizations, and build reports without deep technical skills.</p>
+                
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Natural language queries for data exploration.</li>
+                            <li>Enables creation of visualizations and interactive reports.</li>
+                            <li>Makes analytics more accessible to a broader audience.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>May produce inaccurate results if DAX logic isn't well understood.</li>
+                            <li>Some features may not save as much time as expected.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Interactive Dashboards, Ad Hoc Reporting, Data Exploration, Self-Service BI.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://github.com/microsoft/data-formulator">Data Formulator</a></div>
+                </div>
+                <p class="tool-description">Tool for generating data visualizations through natural language and graphical interaction, enabling non-coders to create complex charts.</p>
+                
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Enables creation of complex visualizations without writing code.</li>
+                            <li>Intuitive interface helps users focus on concepts rather than data manipulation.</li>
+                            <li>Ideal for analysts and professionals who need to communicate insights effectively.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>As an emerging tool, it may have limited integration with other platforms.</li>
+                            <li>Requires an initial learning curve to fully leverage its capabilities.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Data Storytelling, Chart Design without Code, Insight Presentation, Exploratory Analysis.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3 - Writing, Summarization, and Translation -->
+        <div id="writing" class="category-section">
+            <div class="category-header">
+                <h2>3. Writing, Summarization, and Translation</h2>
+            </div>
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon"></div>
+                        <div class="tool-name"><a href="https://quillbot.com/">Quillbot</a></div>
+                    </div>
+                    <p class="tool-description">Paraphrasing and writing enhancement tool that improves clarity, checks grammar, summarizes text, and translates content.</p>
+
+                    <div class="features-grid">
+                        <div class="advantages">
+                            <div class="section-title">Advantages</div>
+                            <ul class="feature-list">
+                                <li>Paraphrasing and writing enhancement.</li>
+                                <li>Translation, summarization, and grammar checking features.</li>
+                                <li>User-friendly and easy-to-use interface.</li>
+                            </ul>
+                        </div>
+
+                        <div class="limitations">
+                            <div class="section-title">Limitations</div>
+                            <ul class="feature-list">
+                                <li>May occasionally produce repetitive or nonsensical text.</li>
+                                <li>Some advanced features require a paid subscription.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="use-cases">
+                        <div class="section-title">Use Cases</div>
+                        <p>Text Rewriting, Grammar Correction, Summarization, Multilingual Content Adaptation, Essay Editing.</p>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon"></div>
+                        <div class="tool-name"><a href="https://www.wordtune.com/">Wordtune</a></div>
+                    </div>
+                    <p class="tool-description">Smart writing assistant that helps refine tone, style, and clarity for professional and personal communication.</p>
+
+                    <div class="features-grid">
+                        <div class="advantages">
+                            <div class="section-title">Advantages</div>
+                            <ul class="feature-list">
+                                <li>Suggestions to enhance clarity, style, and tone.</li>
+                                <li>Alternative phrasings to reinforce or adjust messaging.</li>
+                                <li>Well-suited for professional writing.</li>
+                            </ul>
+                        </div>
+
+                        <div class="limitations">
+                            <div class="section-title">Limitations</div>
+                            <ul class="feature-list">
+                                <li>May not always fully grasp the context of the text.</li>
+                                <li>Some features are limited in the free plan.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="use-cases">
+                        <div class="section-title">Use Cases</div>
+                        <p>Email Drafting, Report Editing, Strategic Document Polishing, Tone Refinement, Message Rewriting.</p>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon"></div>
+                        <div class="tool-name"><a href="https://www.deepl.com/">DeepL</a></div>
+                    </div>
+                    <p class="tool-description">High-quality AI-powered translation tool with superior linguistic accuracy and tone preservation, supporting multiple formats and languages.</p>
+
+                    <div class="features-grid">
+                        <div class="advantages">
+                            <div class="section-title">Advantages</div>
+                            <ul class="feature-list">
+                                <li>High-quality, accurate translations.</li>
+                                <li>Supports multiple languages and text formats.</li>
+                                <li>Intuitive, user-friendly interface.</li>
+                                <li>Ability to upload entire documents for direct translation.</li>
+                            </ul>
+                        </div>
+
+                        <div class="limitations">
+                            <div class="section-title">Limitations</div>
+                            <ul class="feature-list">
+                                <li>Character limits in the free version.</li>
+                                <li>Some advanced features, like document translation and custom glossaries, require a paid subscription.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="use-cases">
+                        <div class="section-title">Use Cases</div>
+                        <p>Multilingual Translation, Document Localization, Business Email Translation, Technical Content Adaptation, Tone Preservation.</p>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://notebooklm.google.com/">NotebookLM</a></div>
+                </div>
+                <p class="tool-description">AI-powered research tool from Google that helps synthesize insights from documents, notes, and websites using contextual summaries and Q&A.</p>
+
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Ability to analyze multiple documents simultaneously and find connections between them.</li>
+                            <li>Intuitive interface that makes organizing and navigating complex information easier.</li>
+                            <li>Automatic generation of summaries and contextualized responses based on uploaded sources.</li>
+                            <li>Native integration with the Google ecosystem and free access.</li>
+                            <li>Excellent for academic research and specialized literature analysis.</li>
+                        </ul>
+                    </div>
+
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Limited to the sources uploaded by the user; does not have access to real-time web information.</li>
+                            <li>May have restrictions on the number or size of documents that can be processed at once.</li>
+                            <li>The quality of results is directly tied to the quality and relevance of the provided source documents.</li>
+                            <li>Some features are still in development, so advanced functionalities may not be available.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Document Summarization, Academic Research, Knowledge Synthesis, Contextual Q&A, Cross-Source Insight Generation.</p>
+                </div>
+                </div>
+        </div>
+
+        <!-- 4 - Design, Creativity, and Presentations-->
+        <div id="design" class="category-section">
+            <div class="category-header">
+                <h2>4. Design, Creativity, and Presentations</h2>
+            </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon"></div>
+                        <div class="tool-name">Beautiful.ai</div>
+                    </div>
+                    <p class="tool-description">AI-powered presentation tool that automates design, ensuring visual consistency, professional layouts, and fast content creation.</p>
+
+                    <div class="features-grid">
+                        <div class="advantages">
+                            <div class="section-title">Advantages</div>
+                            <ul class="feature-list">
+                                <li>Smart, automatic design that dynamically adjusts to added content.</li>
+                                <li>Extensive library of professional templates and high-quality visual elements.</li>
+                                <li>Intuitive interface for fast, no-design-skill presentations.</li>
+                                <li>Real-time collaboration support.</li>
+                                <li>Integration with business tools and data sources.</li>
+                            </ul>
+                        </div>
+
+                        <div class="limitations">
+                            <div class="section-title">Limitations</div>
+                            <ul class="feature-list">
+                                <li>Advanced features and templates require a paid subscription.</li>
+                                <li>Less flexibility compared to traditional tools like PowerPoint.</li>
+                                <li>Requires internet connection to access full features.</li>
+                                <li>Some learning curve for traditional tool users.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="use-cases">
+                        <div class="section-title">Use Cases</div>
+                        <p>Business Presentations, Sales Decks, Internal Reports, Client Proposals, Team Collaboration.</p>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon"></div>
+                        <div class="tool-name"><a href="https://tome.app/">Tome</a></div>
+                    </div>
+                    <p class="tool-description">AI-powered storytelling platform that generates complete multimedia presentations from prompts, blending text, visuals, and interactivity.</p>
+
+                    <div class="features-grid">
+                        <div class="advantages">
+                            <div class="section-title">Advantages</div>
+                            <ul class="feature-list">
+                                <li>Automatic generation of full content, including structure and visuals.</li>
+                                <li>Combines text, images, videos, and interactive charts.</li>
+                                <li>Modern and intuitive interface with customization options.</li>
+                                <li>Great for business storytelling and pitch decks.</li>
+                            </ul>
+                        </div>
+
+                        <div class="limitations">
+                            <div class="section-title">Limitations</div>
+                            <ul class="feature-list">
+                                <li>Content quality depends on prompt clarity and detail.</li>
+                                <li>Premium features require a paid subscription.</li>
+                                <li>Less granular control over specific design elements.</li>
+                                <li>Generic results possible with vague input.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="use-cases">
+                        <div class="section-title">Use Cases</div>
+                        <p>Pitch Decks, Product Introductions, Educational Content, Visual Storytelling, Startup Narratives.</p>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon"></div>
+                        <div class="tool-name"><a href="https://www.canva.com/">Canva + Magic Design</a></div>
+                    </div>
+                    <p class="tool-description">Design assistant that uses AI to suggest full visual layouts and edit content automatically based on input like text or images.</p>
+
+                    <div class="features-grid">
+                        <div class="advantages">
+                            <div class="section-title">Advantages</div>
+                            <ul class="feature-list">
+                                <li>Suggests complete designs based on text, colors, or images.</li>
+                                <li>AI-generated visual content and editing tools.</li>
+                                <li>Ideal for quick creation of visual assets without design skills.</li>
+                            </ul>
+                        </div>
+
+                        <div class="limitations">
+                            <div class="section-title">Limitations</div>
+                            <ul class="feature-list">
+                                <li>Some advanced features require a paid subscription.</li>
+                                <li>May have limitations in detailed customization.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="use-cases">
+                        <div class="section-title">Use Cases</div>
+                        <p>Social Media Graphics, Infographics, Presentations, Marketing Assets, Event Invitations.</p>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon"></div>
+                        <div class="tool-name"><a href="https://gamma.app/">Gamma.app</a></div>
+                    </div>
+                    <p class="tool-description">Presentation platform that transforms ideas into interactive narratives, adapting design and layout as content evolves.</p>
+
+                    <div class="features-grid">
+                        <div class="advantages">
+                            <div class="section-title">Advantages</div>
+                            <ul class="feature-list">
+                                <li>Creates interactive, narrative-driven presentations.</li>
+                                <li>Adapts content and layout automatically as you write.</li>
+                                <li>Ideal for executive briefings and business proposals.</li>
+                            </ul>
+                        </div>
+
+                        <div class="limitations">
+                            <div class="section-title">Limitations</div>
+                            <ul class="feature-list">
+                                <li>Advanced features may require a paid subscription.</li>
+                                <li>May need manual review for narrative coherence.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="use-cases">
+                        <div class="section-title">Use Cases</div>
+                        <p>Executive Presentations, Business Reports, Strategy Briefings, Concept Pitches, Visual Narratives.</p>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon"></div>
+                        <div class="tool-name">Cove AI</div>
+                    </div>
+                    <p class="tool-description">AI-powered strategic thinking tool that helps create visual mind maps, flow diagrams, and business frameworks collaboratively.</p>
+
+                    <div class="features-grid">
+                        <div class="advantages">
+                            <div class="section-title">Advantages</div>
+                            <ul class="feature-list">
+                                <li>Transforms ideas into structured visual strategies.</li>
+                                <li>AI suggests connections and optimizes strategic frameworks.</li>
+                                <li>Collaborative interface for co-creation.</li>
+                                <li>Templates for strategic and organizational planning.</li>
+                                <li>Strong link between visual thinking and decision-making.</li>
+                            </ul>
+                        </div>
+
+                        <div class="limitations">
+                            <div class="section-title">Limitations</div>
+                            <ul class="feature-list">
+                                <li>Steep learning curve for new users.</li>
+                                <li>Advanced features and collaboration require paid plans.</li>
+                                <li>Best suited for strategic planning, less flexible for general use.</li>
+                                <li>Depends on quality and clarity of input.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="use-cases">
+                        <div class="section-title">Use Cases</div>
+                        <p>Strategic Mapping, Business Planning, Organizational Analysis, Product Ideation, Decision Frameworks.</p>
+                    </div>
+                </div>
+        </div>
+
+        <!-- 5 - Search, Content Organization, and Productivity-->
+        <div id="search" class="category-section">
+            <div class="category-header">
+                <h2>5. Search, Content Organization, and Productivity</h2>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://www.perplexity.ai/">Perplexity.ai</a></div>
+                </div>
+                <p class="tool-description">AI-powered search engine that combines real-time web search with conversational answers, complete with citations and deep research capabilities.</p>
+
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Access to real-time information with direct source citations.</li>
+                            <li>Conversational interface for deeper exploration of topics.</li>
+                            <li>Uses GPT-4, Claude 3.5, and other advanced models.</li>
+                            <li>Special features like stock search, comparisons, and image/file analysis.</li>
+                            <li>Mobile apps with voice search included.</li>
+                        </ul>
+                    </div>
+
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Daily limit on advanced searches in the free version.</li>
+                            <li>Advanced research tools and Labs limited to Pro plans.</li>
+                            <li>Response quality depends on source availability and accuracy.</li>
+                            <li>Basic prompts may lead to generic or duplicated results.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Deep Web Research, Market Intelligence, Academic Investigation, Content Drafting, Comparative Analysis.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://you.com/">You.com ARI</a></div>
+                </div>
+                <p class="tool-description">AI research assistant combining real-time search with intelligent synthesis and structured report generation, ideal for academic and professional use.</p>
+
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Real-time data from the web with reliable citations.</li>
+                            <li>Combines multiple perspectives intelligently.</li>
+                            <li>Conversational queries and follow-ups supported.</li>
+                            <li>Structured report generation with references.</li>
+                            <li>Useful for both academic and business research.</li>
+                        </ul>
+                    </div>
+
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Relies on the diversity and credibility of sources.</li>
+                            <li>May reflect bias if sources lean in one direction.</li>
+                            <li>Premium subscription needed for advanced research tools.</li>
+                            <li>Requires critical thinking to validate results.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Academic Research, Competitive Analysis, Industry Reports, Fact Checking, Market Trends Exploration.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://mem.ai/">Mem.ai</a></div>
+                </div>
+                <p class="tool-description">Productivity tool that uses AI to dynamically capture and connect ideas, notes, and tasks with contextual search and smart tagging.</p>
+
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Dynamic capture of notes, tasks, and ideas.</li>
+                            <li>Contextual search and AI-based tagging.</li>
+                            <li>Promotes fast, agile, and interconnected workflows.</li>
+                        </ul>
+                    </div>
+
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Requires adaptation to its new workflow model.</li>
+                            <li>Free version may limit access to premium features.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Personal Knowledge Management, Team Notes, Creative Brainstorming, Daily Task Tracking, Workflow Organization.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://www.notion.so">Notion AI</a></div>
+                </div>
+                <p class="tool-description">Built-in AI inside Notion to generate text, summarize, and rewrite content intelligently within collaborative documentation and project workflows.</p>
+
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Automatic text generation and summarization.</li>
+                            <li>Native to Notion’s workspace environment.</li>
+                            <li>Streamlines documentation and planning tasks.</li>
+                            <li>Ideal for team collaboration on projects and wikis.</li>
+                        </ul>
+                    </div>
+
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Some features require a paid subscription.</li>
+                            <li>May have a learning curve for users new to Notion.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Internal Documentation, Project Planning, Meeting Notes, Knowledge Bases, Collaborative Writing.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6 - Audio and Voice Editing-->
+        <div id="audio" class="category-section">
+            <div class="category-header">
+                <h2>6. Audio and Voice Editing</h2>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://www.descript.com/">Descript</a></div>
+                </div>
+                <p class="tool-description">Edit audio and video by editing text. Transcription-based workflow enables seamless cutting, moving, and removing of content, with features like voice cloning and automatic subtitles.</p>
+
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Text-based audio and video editing.</li>
+                            <li>Voice cloning and subtitle generation included.</li>
+                            <li>Great for podcasts and multimedia production.</li>
+                        </ul>
+                    </div>
+
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Advanced tools may require a subscription.</li>
+                            <li>Learning curve for all-in-one features.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Podcast Editing, Video Transcription, Voice Over Production, Audiogram Creation, Multimedia Publishing.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://elevenlabs.io/">ElevenLabs</a></div>
+                </div>
+                <p class="tool-description">AI voice synthesis platform with highly realistic intonation, multilingual support, and voice cloning for narration, assistants, and custom audio content.</p>
+
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>High-quality, expressive voice synthesis.</li>
+                            <li>Supports multiple languages and accents.</li>
+                            <li>Voice cloning and emotion control available.</li>
+                        </ul>
+                    </div>
+
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Free plan limits access to advanced controls.</li>
+                            <li>Manual adjustments may be needed for realism.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Narration, Audiobooks, AI Voice Assistants, Localization, Prototyping Interactive Audio.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://krisp.ai/">Krisp</a></div>
+                </div>
+                <p class="tool-description">Real-time noise cancellation for voice and video calls, removing background sounds, echoes, and secondary voices for clearer communication.</p>
+
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Effective background noise and echo suppression.</li>
+                            <li>Enhances clarity during virtual meetings and calls.</li>
+                            <li>Works across major video conferencing tools.</li>
+                        </ul>
+                    </div>
+
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Struggles with very noisy environments.</li>
+                            <li>Premium features require a subscription.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Remote Work Calls, Webinars, Live Streaming, Customer Support Centers, Online Teaching.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://podcast.adobe.com/">Adobe Podcast</a></div>
+                </div>
+                <p class="tool-description">Web-based platform with AI-powered tools like "Enhance Speech" to improve audio clarity and text-based audio editing, built for podcasters and content creators.</p>
+
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>One-click audio enhancement tools.</li>
+                            <li>Text-based editing similar to Descript.</li>
+                            <li>Optimized for podcast and spoken-word production.</li>
+                        </ul>
+                    </div>
+
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Not as feature-rich as professional DAWs.</li>
+                            <li>Subscription may be required for full feature access.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Podcast Production, Audio Cleanup, Interview Editing, Remote Recording, Educational Content.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://mubert.com/">Mubert</a></div>
+                </div>
+                <p class="tool-description">AI platform for generating real-time, royalty-free music based on mood, activity, duration, and genre. Designed for content creators and streamers.</p>
+
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Instant generation of royalty-free background music.</li>
+                            <li>Supports various moods, durations, and styles.</li>
+                            <li>No copyright concerns; easy integration for creators.</li>
+                        </ul>
+                    </div>
+
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Music may lack emotional depth of human composition.</li>
+                            <li>Paid subscription needed for commercial use and HD audio.</li>
+                            <li>Limited control over instruments and progression.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>YouTube/Podcast Background Music, Meditation Tracks, Streaming Intros, Corporate Video Soundscapes, Focus Playlists.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7 - Workflow Automation-->
+        <div id="workflow" class="category-section">
+            <div class="category-header">
+                <h2>7. Workflow Automation</h2>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://zapier.com/">Zapier + AI</a></div>
+                </div>
+                <p class="tool-description">Zapier is an automation platform that allows users to create workflows between applications, now enhanced with AI functionalities like text processing, sentiment analysis, and content generation. It is ideal for businesses and professionals looking to automate complex processes.</p>
+
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Integrates with over 5000+ apps and services.</li>
+                            <li>AI-powered text processing and content generation.</li>
+                            <li>Intelligent automation that adapts to content and context.</li>
+                            <li>Enterprise scalability and advanced management features.</li>
+                        </ul>
+                    </div>
+
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>AI features require premium plans.</li>
+                            <li>More complex setup than simple automations.</li>
+                            <li>Increased task consumption with AI processing.</li>
+                            <li>Learning curve for prompt and AI logic usage.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Content Automation, Personalized Marketing, Dynamic Workflows, Business Process Automation.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://www.make.com/">Make</a></div>
+                </div>
+                <p class="tool-description">Make (formerly Integromat) is a visual automation platform that allows users to create complex workflows. It enhances automations with AI functionalities, optimized for technical users who require full control over their processes.</p>
+
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Highly customizable visual interface.</li>
+                            <li>Advanced error handling and parallel data processing.</li>
+                            <li>Integration with hundreds of services and custom APIs.</li>
+                            <li>AI optimization for data processing and decision-making.</li>
+                        </ul>
+                    </div>
+
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Steep learning curve for non-technical users.</li>
+                            <li>Complexity increases with intricate automations.</li>
+                            <li>Higher plans require expensive subscriptions.</li>
+                            <li>Significant setup time for elaborate workflows.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Advanced Automation, Data Processing, Complex Integrations, Custom API Connections.</p>
+                </div>
+            </div>
+
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://www.bardeen.ai/">Bardeen</a></div>
+                </div>
+                <p class="tool-description">Bardeen is a browser extension that automates tasks directly from the browser, integrating AI to simplify workflows without coding. It works with over 130 popular apps.</p>
+
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>User-friendly interface for non-technical users.</li>
+                            <li>Integration with a wide range of apps.</li>
+                            <li>Automates complex tasks with no coding required.</li>
+                        </ul>
+                    </div>
+
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Some automations may need fine-tuning.</li>
+                            <li>Dependent on the browser for functionality.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Task Automation, Data Entry, Email Management, Social Media Automation.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://www.gumloop.com/">Gumloop</a></div>
+                </div>
+                <p class="tool-description">Gumloop is an AI-powered workflow automation tool designed for teams and small businesses to automate processes with drag-and-drop simplicity. It integrates various platforms and uses AI to optimize workflows.</p>
+
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Intuitive visual interface with no coding required.</li>
+                            <li>Native integrations with popular platforms (CRM, email, social media).</li>
+                            <li>AI suggestions for workflow optimization.</li>
+                            <li>Scalable from simple to complex automation tasks.</li>
+                        </ul>
+                    </div>
+
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Learning curve for new users.</li>
+                            <li>Advanced features require premium plans.</li>
+                            <li>Relies on third-party integrations which may have limitations.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Marketing Automation, Sales Process Optimization, Task Management, Data Synchronization.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 8 - Specialized Tools-->
+        <div id="specialized" class="category-section">
+            <div class="category-header">
+                <h2>8. Specialized Tools</h2>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://www.chatpdf.com/">ChatPDF</a></div>
+                </div>
+                <p class="tool-description">ChatPDF allows users to upload PDF documents and ask questions in natural language to obtain summaries, identify key data, or find specific information within the file. It’s particularly useful for quickly exploring long reports, contracts, or technical manuals.</p>
+
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Intuitive and easy to use.</li>
+                            <li>Ideal for long or technical documents.</li>
+                            <li>Saves time on extensive reading.</li>
+                        </ul>
+                    </div>
+
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Doesn’t always handle complex tables or graphs well.</li>
+                            <li>Depends on the clarity of the original document.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Document Analysis, Contract Review, Report Summarization, Data Extraction from PDFs.</p>
+                </div>
+            </div>
+
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://sana.ai/">Sana AI</a></div>
+                </div>
+                <p class="tool-description">Sana AI is a knowledge management platform that uses AI to efficiently organize and access business information. It allows teams to centralize documents, procedures, and knowledge, fostering collaboration and continuous learning.</p>
+
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Centralizes business knowledge in a single platform.</li>
+                            <li>Facilitates AI-powered search and retrieval of information.</li>
+                            <li>Encourages collaboration and knowledge sharing within teams.</li>
+                        </ul>
+                    </div>
+
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Requires time for initial setup and data migration.</li>
+                            <li>Some advanced features are available only on paid plans.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Business Knowledge Management, Collaborative Learning, Document Organization, Procedure Management.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://www.lexion.ai/">Lexion</a></div>
+                </div>
+                <p class="tool-description">Lexion is an AI-powered contract management tool that helps companies organize, analyze, and extract key information from their contracts. It facilitates tracking important dates, clauses, and contractual obligations.</p>
+
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Automates extraction of key contract information.</li>
+                            <li>Improves visibility and tracking of obligations.</li>
+                            <li>Reduces the risk of non-compliance.</li>
+                        </ul>
+                    </div>
+
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>May require integration with existing document management systems.</li>
+                            <li>Extraction accuracy depends on the quality of the original document.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Contract Management, Risk Mitigation, Legal Compliance, Key Data Extraction.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://elicit.org/">Elicit</a></div>
+                </div>
+                <p class="tool-description">Elicit is an AI-powered research assistant designed to analyze academic papers, extract relevant information, and answer research questions based on verified academic literature. It helps researchers accelerate the literature review process by automating analysis of scientific publications.</p>
+
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Fast analysis of academic papers with extraction of key data.</li>
+                            <li>Intelligent semantic search beyond exact keywords.</li>
+                            <li>Automated comparisons between different studies.</li>
+                            <li>Ideal for systematic reviews and meta-analyses.</li>
+                        </ul>
+                    </div>
+
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Primarily limited to academic research.</li>
+                            <li>Quality depends on the availability of papers in its database.</li>
+                            <li>Advanced features require a premium subscription.</li>
+                            <li>May not capture all nuances of complex studies.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Academic Research, Literature Review, Meta-analysis, Study Comparison.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 9 - Virtual Assistants - Conversational AI-->
+        <div id="virtual-assistants" class="category-section">
+            <div class="category-header">
+                <h2>9. Virtual Assistants - Conversational AI</h2>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://chat.openai.com/">ChatGPT</a></div>
+                </div>
+                <p class="tool-description">ChatGPT is a conversational assistant based on advanced language models, designed to generate content, summarize documents, translate texts, and answer questions. It is useful for writing emails, drafting reports, planning presentations, or simply brainstorming with AI support.</p>
+
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Content generation, summaries, and translations.</li>
+                            <li>Versatile conversational assistant.</li>
+                            <li>Useful for emails, reports, and presentation planning.</li>
+                        </ul>
+                    </div>
+
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>May generate incorrect or biased information.</li>
+                            <li>Limited contextual understanding and moral judgment.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Content generation, summarization, email drafting, presentation planning.</p>
+                </div>
+            </div>
+
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://claude.ai/">Claude</a></div>
+                </div>
+                <p class="tool-description">Claude is a conversational assistant developed by Anthropic, with a strong focus on ethical alignment, safety, and control. It excels at maintaining long dialogues, answering complex questions, and generating reliable content.</p>
+
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Coherent and extended conversations.</li>
+                            <li>Emphasis on safe and aligned responses.</li>
+                            <li>Excellent for complex tasks and long-form content.</li>
+                        </ul>
+                    </div>
+
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>No direct public interface (accessible via platforms like Poe or API).</li>
+                            <li>Less customization compared to other AI tools.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Extended dialogues, complex content generation, long-duration tasks.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://poe.com/">Poe (Quora)</a></div>
+                </div>
+                <p class="tool-description">Poe is a platform developed by Quora that provides unified access to multiple conversational AI models, including ChatGPT, Claude, Gemini, and other specialized assistants, all from a single interface. Users can compare responses across models, create custom bots, and access different capabilities depending on the task.</p>
+
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Access to multiple premium AI models from a single platform.</li>
+                            <li>Ability to compare responses across models for diverse perspectives.</li>
+                            <li>Creation of custom bots with specific characteristics.</li>
+                            <li>Unified interface that simplifies access to various AI technologies.</li>
+                        </ul>
+                    </div>
+
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Full access to premium models requires a Poe Pro subscription.</li>
+                            <li>Daily usage limits in the free version may be restrictive for frequent users.</li>
+                            <li>Less customization and control compared to native access to individual platforms.</li>
+                            <li>Dependence on the availability and policies of integrated AI providers.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Comparing responses across models, creating custom bots, accessing different AI technologies.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://gemini.google.com/">Gemini</a></div>
+                </div>
+                <p class="tool-description">Gemini is Google's conversational assistant that combines advanced natural language processing capabilities with real-time information access and integration across the Google ecosystem. It can perform various tasks such as answering questions, generating content, analyzing documents, programming, and assisting with research, while seamlessly integrating with Gmail, Google Drive, Maps, and other Google Workspace applications.</p>
+
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Deep integration with the full range of Google products and services.</li>
+                            <li>Real-time information access through search capabilities.</li>
+                            <li>Multimodal interface that processes text, images, and other content simultaneously.</li>
+                            <li>Robust functionality included in the free basic version.</li>
+                        </ul>
+                    </div>
+
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Advanced features require a Gemini Advanced subscription.</li>
+                            <li>Dependency on the Google ecosystem may limit flexibility for non-Google users.</li>
+                            <li>Lower enterprise adoption compared to competitors like ChatGPT or Claude.</li>
+                            <li>Privacy and data usage policies may raise concerns for some users.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Research, content generation, document analysis, integration with Google Workspace.</p>
+                </div>
+            </div>
+           
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://copilot.microsoft.com/">Microsoft Copilot</a></div>
+                </div>
+                <p class="tool-description">Microsoft Copilot is the AI assistant integrated into the Microsoft ecosystem, offering advanced conversational capabilities and intelligent automation across Office 365, Windows, Edge, and other Microsoft applications. It combines content generation, data analysis, task automation, and productivity assistance directly within the tools users already use daily.</p>
+
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Deep integration with Office 365, Teams, Outlook, and the broader Microsoft enterprise ecosystem.</li>
+                            <li>Automation and contextual assistance within documents, presentations, and spreadsheets.</li>
+                            <li>Ideal for enterprise environments already using Microsoft infrastructure.</li>
+                            <li>Real-time collaboration and built-in productivity analytics.</li>
+                        </ul>
+                    </div>
+
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Requires an active Microsoft 365 subscription to access full functionality.</li>
+                            <li>Primarily limited to users within the Microsoft ecosystem.</li>
+                            <li>There may be a learning curve to fully leverage its potential across various apps.</li>
+                            <li>Significant additional costs for organizations seeking full-scale deployment.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Task automation, productivity assistance, content generation, team collaboration.</p>
+                </div>
+            </div>
+
+        </div>
+        
+        <!-- 10 - Image and Video Generation-->
+        <div id="image-video" class="category-section">
+            <div class="category-header">
+                <h2>10. Image and Video Generation</h2>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://runwayml.com/">Runway</a></div>
+                </div>
+                <p class="tool-description">Runway ML is a comprehensive suite of AI creative tools specialized in video and image generation and editing. The platform offers advanced capabilities such as text-to-video generation, automatic editing, background removal, visual effects creation, and multimedia transformation using cutting-edge AI algorithms.</p>
+
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Complete suite of AI tools for video and image creation.</li>
+                            <li>High-quality video generation from textual prompts.</li>
+                            <li>Professional interface designed for creative workflows in audiovisual production.</li>
+                            <li>Ongoing innovation with new features and state-of-the-art AI models.</li>
+                        </ul>
+                    </div>
+
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>High costs for intensive use, especially for high-resolution video generation.</li>
+                            <li>Processing times can be long for complex or high-quality projects.</li>
+                            <li>Steep learning curve to fully utilize all available tools.</li>
+                            <li>Duration and resolution limits depending on the subscription plan.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Video creation, automatic editing, visual effects, multimedia content transformation.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://www.midjourney.com/">Midjourney</a></div>
+                </div>
+                <p class="tool-description">Midjourney is an AI-powered platform for artistic image generation that enables users to create unique illustrations, digital art, and visualizations from text descriptions. It excels at producing high-quality images in a wide range of artistic styles, from photorealism to conceptual art.</p>
+
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Outstanding artistic quality with visually impressive and professional results.</li>
+                            <li>Wide variety of artistic styles and ability to emulate specific art techniques.</li>
+                            <li>Active community that shares prompt techniques and best practices.</li>
+                            <li>Fast iteration and refinement of images via variations and upscaling.</li>
+                        </ul>
+                    </div>
+
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Requires a paid subscription—no free tier for regular use.</li>
+                            <li>Discord-based interface may be confusing for unfamiliar users.</li>
+                            <li>Limited control over specific composition elements compared to traditional design tools.</li>
+                            <li>Restrictive content policies may limit certain types of artistic creation.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Digital art creation, illustrations, artistic visualizations, concept design.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://openai.com/dall-e">DALL·E</a></div>
+                </div>
+                <p class="tool-description">DALL·E is an image generation tool from OpenAI that creates visuals from natural language descriptions. It is ideal for generating sketches, visual prototypes, or creative content.</p>
+
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Excellent integration with tools like ChatGPT.</li>
+                            <li>High-quality images generated from textual prompts.</li>
+                            <li>Ability to edit specific areas of an image.</li>
+                        </ul>
+                    </div>
+
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Not as artistically expressive as Midjourney.</li>
+                            <li>Limitations in generating realistic faces.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Visual prototypes, creative content generation, sketches, targeted image edits.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://openai.com/sora">Sora (OpenAI)</a></div>
+                </div>
+                <p class="tool-description">Sora by OpenAI is a video generation model that creates realistic, coherent clips from detailed textual descriptions. The tool can generate up to 60 seconds of high-quality video with fluid motion and complex scenes.</p>
+
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Unprecedented video generation quality in the industry.</li>
+                            <li>Ability to create complex scenes with multiple elements, characters, and consistent motion.</li>
+                            <li>Extended video length (up to 60 seconds) compared to current competitors.</li>
+                            <li>Revolutionary potential to democratize professional video content production.</li>
+                        </ul>
+                    </div>
+
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Extremely limited access, currently available only for researchers and specific cases.</li>
+                            <li>Commercial availability and pricing for the general public still undefined.</li>
+                            <li>Significant ethical concerns around deepfakes and visual misinformation.</li>
+                            <li>Considerable processing time for high-quality, extended-duration videos.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>High-quality video generation, audiovisual prototypes, innovative visual content production.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://www.kling.ai/">Kling AI</a></div>
+                </div>
+                <p class="tool-description">Kling AI is a Chinese video generation platform that uses artificial intelligence to produce realistic audiovisual content from text descriptions or reference images.</p>
+
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Can generate longer videos (up to 2 minutes) with competitive quality.</li>
+                            <li>Excellent handling of complex movements and dynamic visual effects.</li>
+                            <li>More affordable compared to premium Western alternatives.</li>
+                            <li>Interface tailored to users who prefer non-Western platforms.</li>
+                        </ul>
+                    </div>
+
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Limited availability in certain regions due to geographic and regulatory restrictions.</li>
+                            <li>Customer support and documentation are primarily in Chinese, limiting international accessibility.</li>
+                            <li>Privacy and data policy concerns for users outside China.</li>
+                            <li>Lower integration with standard Western productivity tools and ecosystems.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Long video generation, complex visual effects, dynamic content production.</p>
+                </div>
+            </div>
+           
+        </div>
+
+        <!-- 11 - Coding and Assisted Development -->
+        <div id="coding" class="category-section">
+            <div class="category-header">
+                <h2>11. Coding and Assisted Development </h2>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://github.com/features/copilot">GitHub Copilot</a></div>
+                </div>
+                <p class="tool-description">AI coding assistant that provides real-time code suggestions, full functions, and contextual help directly in popular IDEs.</p>
+                
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Highly accurate, context-aware code suggestions in real time.</li>
+                            <li>Supports multiple programming languages and popular frameworks.</li>
+                            <li>Native integration with GitHub and the Microsoft development ecosystem.</li>
+                            <li>Can generate complex code and entire functions from descriptive comments.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Requires a paid monthly subscription for individual and enterprise use.</li>
+                            <li>May occasionally suggest code with security vulnerabilities or suboptimal patterns.</li>
+                            <li>Raises copyright concerns due to training on public code repositories.</li>
+                            <li>Over-reliance may hinder learning and skill development, especially for junior developers.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Code Autocompletion, Complex Function Generation, Multilanguage Development, Productivity Boost, IDE Integration.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://aws.amazon.com/codewhisperer/">Amazon CodeWhisperer</a></div>
+                </div>
+                <p class="tool-description">AI coding assistant optimized for AWS development, offering real-time suggestions, security scanning, and cloud best practices.</p>
+                
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Optimized for AWS services and cloud-native architectures.</li>
+                            <li>Generous free tier for individual developers with robust functionality.</li>
+                            <li>Integrated security scanning and vulnerability detection.</li>
+                            <li>Supports multiple languages with a focus on enterprise and cloud development.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Most useful for developers primarily working with AWS technologies.</li>
+                            <li>Lower accuracy for non-cloud-related code compared to competitors.</li>
+                            <li>More limited ecosystem of integrations compared to GitHub Copilot.</li>
+                            <li>Additional learning curve for those unfamiliar with AWS services.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Cloud-Native Development, AWS Best Practices, Secure Coding, Real-Time Suggestions, IDE Integration.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://replit.com/ghostwriter">Replit Ghostwriter</a></div>
+                </div>
+                <p class="tool-description">AI assistant built into Replit for real-time code generation, education, and collaborative programming in a browser-based environment.</p>
+                
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Seamless integration with Replit’s online development environment—no setup required.</li>
+                            <li>Ideal for education, rapid prototyping, and real-time collaborative development.</li>
+                            <li>Immediate access without local installation or IDE configuration.</li>
+                            <li>Competitive pricing bundled with Replit subscriptions.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Limited exclusively to the Replit ecosystem—not available in other editors.</li>
+                            <li>Less powerful and precise compared to independent specialized code assistants.</li>
+                            <li>Fully dependent on internet connection and platform availability.</li>
+                            <li>May struggle with complex projects requiring specific local environments.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Education, Browser-Based Coding, Collaborative Development, Prototyping, Coding Without Setup.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://codeium.com/">Codeium</a></div>
+                </div>
+                <p class="tool-description">Free AI coding assistant offering real-time suggestions across 70+ languages, with strong editor support and a transparent privacy model.</p>
+                
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Completely free for individual use with robust features included.</li>
+                            <li>Supports over 70 programming languages and multiple editors (VS Code, IntelliJ, etc.).</li>
+                            <li>Transparent privacy model that does not use user code for training.</li>
+                            <li>A viable free alternative to premium tools like GitHub Copilot.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Less accurate and sophisticated than paid premium code assistants.</li>
+                            <li>Collaborative and enterprise features require a subscription plan.</li>
+                            <li>Weaker integration with specific ecosystems compared to specialized tools.</li>
+                            <li>Slower customer support and updates than more established commercial alternatives.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Free Code Assistance, Multi-Language Autocompletion, Privacy-Conscious Development, Editor Extensions.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://www.cursor.so/">Cursor</a></div>
+                </div>
+                <p class="tool-description">AI-native code editor offering deep project understanding, conversational assistance, and intelligent refactoring tools for modern developers.</p>
+                
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Natively integrated AI that understands the entire project, not just code snippets.</li>
+                            <li>Conversational interface to explain code, ask questions, and receive context-aware suggestions.</li>
+                            <li>Modern, performant editor designed specifically for AI-assisted development.</li>
+                            <li>Advanced refactoring and smart code analysis capabilities.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>A relatively new editor with a limited extension and plugin ecosystem.</li>
+                            <li>Requires adaptation for developers used to traditional, established IDEs.</li>
+                            <li>Advanced AI features require a paid subscription.</li>
+                            <li>Lower compatibility with legacy development tools and plugins.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>AI-Native Editing, Project-Wide Assistance, Conversational Coding, Smart Refactoring.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://openai.com/blog/openai-codex">Codex (OpenAI)</a></div>
+                </div>
+                <p class="tool-description">Advanced AI model for code generation and understanding, powering tools like GitHub Copilot and enabling natural language to code transformation.</p>
+                
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Proven technology powering successful tools like GitHub Copilot.</li>
+                            <li>Exceptional ability to convert natural language descriptions into functional code.</li>
+                            <li>Deep understanding of multiple languages and development paradigms.</li>
+                            <li>Flexible integration into custom workflows and tools.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Not directly accessible to end users—requires third-party integration.</li>
+                            <li>API access can be costly for heavy or commercial use.</li>
+                            <li>Requires technical knowledge for setup and integration.</li>
+                            <li>Dependent on OpenAI for availability, updates, and usage policies.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Natural Language to Code, AI Tool Integration, Custom Development Assistants, Language-Agnostic Generation.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://www.windsurf.ai/">Windsurf</a></div>
+                </div>
+                <p class="tool-description">Collaborative code editor with integrated AI, enabling real-time teamwork, smart suggestions, and modern productivity features.</p>
+                
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Real-time collaboration with multiple developers simultaneously.</li>
+                            <li>Contextual AI assistance that understands the entire project.</li>
+                            <li>Modern interface optimized for productivity and smooth developer experience.</li>
+                            <li>Seamless integration of human collaboration and artificial intelligence.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Relatively new tool with a limited plugin and extension ecosystem.</li>
+                            <li>Requires a constant internet connection for AI and collaboration features.</li>
+                            <li>May have a learning curve for developers used to traditional IDEs.</li>
+                            <li>Premium features and extended collaboration tools may require a subscription.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Collaborative Coding, AI-Powered Refactoring, Remote Pair Programming, Real-Time Team Assistance.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://www.builder.io/">Builder.io</a></div>
+                </div>
+                <p class="tool-description">Visual development platform that uses AI to build responsive UIs and web apps without manual coding, ideal for designers and marketers.</p>
+                
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Intuitive visual development enables complex app creation without traditional code.</li>
+                            <li>Automatically generates clean, optimized code compatible with popular frameworks.</li>
+                            <li>Native integration with CMS platforms and external APIs.</li>
+                            <li>Real-time previews for seamless collaboration between design and development teams.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Limited customization compared to full-code development from scratch.</li>
+                            <li>Dependency on the platform for hosting and advanced features.</li>
+                            <li>Learning curve for teams used to traditional development workflows.</li>
+                            <li>Costs may scale significantly for complex enterprise projects.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>Visual App Development, No-Code Websites, CMS Integration, Design-Developer Collaboration.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://www.lovable.so/">Lovable</a></div>
+                </div>
+                <p class="tool-description">AI-powered platform to create full web applications from plain-text prompts, ideal for MVPs, rapid prototyping, and non-technical founders.</p>
+                
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Full web applications generated from plain-text descriptions—no coding required.</li>
+                            <li>Extremely fast development of functional MVPs and prototypes.</li>
+                            <li>Clean, editable code for further customization by developers.</li>
+                            <li>Ideal for rapid idea validation and product concept testing.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Limited to certain types of web apps—not suitable for highly complex or niche projects.</li>
+                            <li>Quality depends heavily on the clarity and specificity of the initial prompt.</li>
+                            <li>Limited granular control over architecture and technical decisions.</li>
+                            <li>May require technical skills for advanced code customization.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>No-Code Web App Generation, Startup MVPs, Prototype Testing, Text-to-App Creation.</p>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon"></div>
+                    <div class="tool-name"><a href="https://www.rork.com/">Rork AI</a></div>
+                </div>
+                <p class="tool-description">AI platform for visual, no-code native mobile app development with automatic code and UI generation for iOS and Android.</p>
+                
+                <div class="features-grid">
+                    <div class="advantages">
+                        <div class="section-title">Advantages</div>
+                        <ul class="feature-list">
+                            <li>Simplified native mobile app development without Swift or Kotlin knowledge.</li>
+                            <li>Automatic generation of adaptive UIs for various screen sizes and devices.</li>
+                            <li>Easy integration with backend services, APIs, and native mobile features.</li>
+                            <li>Significant time and cost savings compared to traditional mobile development.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="limitations">
+                        <div class="section-title">Limitations</div>
+                        <ul class="feature-list">
+                            <li>Limited support for highly specific features or advanced hardware integrations.</li>
+                            <li>Dependent on the platform for updates and ongoing app maintenance.</li>
+                            <li>Less flexibility compared to fully custom native development.</li>
+                            <li>Subscription costs may be high for individual developers or startups.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="use-cases">
+                    <div class="section-title">Use Cases</div>
+                    <p>No-Code Mobile App Creation, Rapid Prototyping for iOS/Android, API-Driven UI Generation, Startup Mobile Launches.</p>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <button class="back-to-top" onclick="scrollToTop()" title="Go to top">↑</button>   
+ 
+    <script>
+        // Back to top button functionality
+        window.addEventListener('scroll', function() {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add hover effects to sections
+        document.querySelectorAll('.section').forEach(section => {
+            section.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            section.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(-2px)';
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tools Analysis | NXXXX </title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #34495e;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #34495e, #34495e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        h2 {
+            color: #34495e;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        
+        h3 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin-top: 30px;
+        }
+        
+        .legend {
+            background: linear-gradient(135deg, #ecf0f1,#ecf0f1);
+            color: #34495e;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .legend h3 {
+            color: #34495e;
+            margin-top: 0;
+        }
+        
+        .legend-item {
+            display: inline-flex;
+            align-items: center;
+            margin-right: 20px;
+            margin-bottom: 8px;
+        }
+        
+        .legend-item span {
+            margin-left: 8px;
+            font-size: 0.9em;
+            color: #34495e;
+        }
+        
+        .harvey-ball {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            border: 2px solid #34495e;
+            border-radius: 50%;
+            position: relative;
+            margin: 2px;
+        }
+        
+        .harvey-ball::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+        
+        .harvey-ball.empty::before { background: transparent; }
+        .harvey-ball.quarter::before { 
+            background: conic-gradient(#3498db 0deg 90deg, transparent 90deg 360deg);
+        }
+        .harvey-ball.half::before { 
+            background: conic-gradient(#3498db 0deg 180deg, transparent 180deg 360deg);
+        }
+        .harvey-ball.three-quarter::before { 
+            background: conic-gradient(#3498db 0deg 270deg, transparent 270deg 360deg);
+        }
+        .harvey-ball.full::before { 
+            background: #3498db;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid #ecf0f1;
+            vertical-align: middle;
+        }
+        
+        tr:hover {
+            background-color: #f8f9fa;
+            transform: scale(1.01);
+            transition: all 0.2s ease;
+        }
+        
+        .tool-name {
+            font-weight: 600;
+            color: #2c3e50;
+            text-align: left !important;
+        }
+        
+        .recommendation {
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+        
+        .high {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .medium {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .low {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .category-analysis {
+            background: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .tier-section {
+            margin: 30px 0;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .tier-1 {
+            background: linear-gradient(135deg, #a8e6cf, #88d8a3);
+            color: #2d5a27;
+        }
+        
+        .tier-2 {
+            background: linear-gradient(135deg, #ffd93d, #ff6b6b);
+            color: #8b4513;
+        }
+        
+        .tier-3 {
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            color: #8b0000;
+        }
+        
+        .security-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .security-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+
+ .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+        
+        
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+
+
+        @media (max-width: 768px) {
+            table {
+                font-size: 0.8em;
+            }
+            
+            .harvey-ball {
+                width: 20px;
+                height: 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
+        
+        @media print {
+            body { 
+                background: white !important; 
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .container { 
+                box-shadow: none !important; 
+                border-radius: 0 !important;
+                margin: 0 !important;
+            }
+            .harvey-ball {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">← Home </a>
+
+    <div class="container">
+        <h1>AI Tools Analysis for Enterprise Adoption</h1>
+        
+        <div class="legend">
+            <h3>Harvey Balls Evaluation Scale</h3>
+            <div class="legend-item">
+                <div class="harvey-ball empty"></div>
+                <span>Poor (1/5)</span>
+            </div>
+            <div class="legend-item">
+                <div class="harvey-ball quarter"></div>
+                <span>Limited (2/5)</span>
+            </div>
+            <div class="legend-item">
+                <div class="harvey-ball half"></div>
+                <span>Fair (3/5)</span>
+            </div>
+            <div class="legend-item">
+                <div class="harvey-ball three-quarter"></div>
+                <span>Good (4/5)</span>
+            </div>
+            <div class="legend-item">
+                <div class="harvey-ball full"></div>
+                <span>Excellent (5/5)</span>
+            </div>
+            <p><strong>Evaluation Criteria:</strong></p>
+            <ul>
+                <li><strong>Cost:</strong> Initial pricing, scalability of pricing plans, value proposition</li>
+                <li><strong>Scalability:</strong> Ability to grow with organization, usage limits, team features</li>
+                <li><strong>Security:</strong> Data protection, compliance standards, administrative controls</li>
+            </ul>
+        </div>
+
+        <h2>1. Note-Taking and Meeting Management</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tool</th>
+                    <th>Cost</th>
+                    <th>Scalability</th>
+                    <th>Security</th>
+                    <th>Recommendation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="tool-name"><a href="https://www.Fireflies.ai">Fireflies.ai</a></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><span class="recommendation high">High</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://www.otter.ai">Otter.ai</a></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><span class="recommendation high">High</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://www.tldv.io">tl;dv</a></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><span class="recommendation medium">Medium</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="category-analysis">
+            <strong>Category Analysis:</strong> Mature tools with solid freemium models. Otter.ai leads in enterprise integration and compliance features.
+        </div>
+
+        <h2>2. Data Analysis and Automation</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tool</th>
+                    <th>Cost</th>
+                    <th>Scalability</th>
+                    <th>Security</th>
+                    <th>Recommendation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                     <td class="tool-name"><a href="https://monkeylearn.com/">MonkeyLearn</a></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><span class="recommendation medium">Medium</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://www.obviously.ai/">Obviously.ai</a></td>
+                    <td><div class="harvey-ball quarter"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><span class="recommendation low">Low</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://powerbi.microsoft.com">Power BI + Copilot</a></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><span class="recommendation high">High</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://github.com/microsoft/data-formulator">Data Formulator</a></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><div class="harvey-ball quarter"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><span class="recommendation low">Low</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="category-analysis">
+            <strong>Category Analysis:</strong> Power BI + Copilot is the most robust option for organizations already in Microsoft ecosystem.
+        </div>
+
+        <h2>3. Writing, Summarization, and Translation</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tool</th>
+                    <th>Cost</th>
+                    <th>Scalability</th>
+                    <th>Security</th>
+                    <th>Recommendation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="tool-name"><a href="https://quillbot.com/">Quillbot</a></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><span class="recommendation medium">Medium</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://www.wordtune.com/">Wordtune</a></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><span class="recommendation medium">Medium</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://www.deepl.com/">DeepL</a></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><span class="recommendation high">High</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://notebooklm.google.com/">NotebookLM</a></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><span class="recommendation medium">Medium</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="category-analysis">
+            <strong>Category Analysis:</strong> DeepL stands out for enterprise translation needs. Consider multiple tools based on specific requirements.
+        </div>
+
+        <h2>4. Design, Creativity, and Presentations</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tool</th>
+                    <th>Cost</th>
+                    <th>Scalability</th>
+                    <th>Security</th>
+                    <th>Recommendation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="tool-name"><a href="https://www.beautiful.ai/">Beautiful.ai</a></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><span class="recommendation medium">Medium</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://tome.app/">Tome</a></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><span class="recommendation medium">Medium</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://www.canva.com/">Canva + Magic Design</a></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><span class="recommendation high">High</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://gamma.app/">Gamma.app</a></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><span class="recommendation medium">Medium</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://www.cove.ai/">Cove AI</a></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><div class="harvey-ball quarter"></div></td>
+                    <td><div class="harvey-ball empty"></div></td>
+                    <td><span class="recommendation low">Low</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="category-analysis">
+            <strong>Category Analysis:</strong> Canva dominates with maturity, competitive pricing, and comprehensive features.
+        </div>
+
+        <h2>5. Search, Content Organization, and Productivity</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tool</th>
+                    <th>Cost</th>
+                    <th>Scalability</th>
+                    <th>Security</th>
+                    <th>Recommendation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="tool-name"><a href="https://www.perplexity.ai/">Perplexity.ai</a></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><span class="recommendation high">High</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://you.com/">You.com ARI</a></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><span class="recommendation medium">Medium</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://mem.ai/">Mem.ai</a></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><div class="harvey-ball quarter"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><span class="recommendation low">Low</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://www.notion.so">Notion AI</a></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><span class="recommendation high">High</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="category-analysis">
+            <strong>Category Analysis:</strong> Perplexity and Notion AI are the strongest options depending on current usage context.
+        </div>
+
+        <h2>6. Audio and Voice Editing</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tool</th>
+                    <th>Cost</th>
+                    <th>Scalability</th>
+                    <th>Security</th>
+                    <th>Recommendation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="tool-name"><a href="https://www.descript.com/">Descript</a></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><span class="recommendation high">High</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://elevenlabs.io/">ElevenLabs</a></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><span class="recommendation medium">Medium</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://krisp.ai/">Krisp</a></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><span class="recommendation high">High</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://podcast.adobe.com/">Adobe Podcast</a></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><span class="recommendation medium">Medium</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://mubert.com/">Mubert</a></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><span class="recommendation low">Low</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="category-analysis">
+            <strong>Category Analysis:</strong> Krisp for daily productivity, Descript for professional content projects.
+        </div>
+
+        <h2>7. Workflow Automation</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tool</th>
+                    <th>Cost</th>
+                    <th>Scalability</th>
+                    <th>Security</th>
+                    <th>Recommendation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="tool-name"><a href="https://zapier.com/">Zapier + AI</a></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><span class="recommendation high">High</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://www.make.com/">Make</a></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><span class="recommendation high">High</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://www.bardeen.ai/">Bardeen</a></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><span class="recommendation medium">Medium</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://www.gumloop.com/">Gumloop</a></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball quarter"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><span class="recommendation low">Low</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="category-analysis">
+            <strong>Category Analysis:</strong> Zapier or Make depending on team's technical level. Both offer significant productivity gains.
+        </div>
+
+        <h2>8. Specialized Tools</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tool</th>
+                    <th>Cost</th>
+                    <th>Scalability</th>
+                    <th>Security</th>
+                    <th>Recommendation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="tool-name"><a href="https://www.chatpdf.com/">ChatPDF</a></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><span class="recommendation medium">Medium</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://sana.ai/">Sana AI</a></td>
+                    <td><div class="harvey-ball quarter"></div></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><span class="recommendation medium">Medium</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://www.lexion.ai/">Lexion</a></td>
+                    <td><div class="harvey-ball empty"></div></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><span class="recommendation low">Low</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://elicit.org/">Elicit</a></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><span class="recommendation medium">Medium</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="category-analysis">
+            <strong>Category Analysis:</strong> Highly specific tools. Evaluate based on departmental needs and use cases.
+        </div>
+
+        <h2>9. Virtual Assistants - Conversational AI</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tool</th>
+                    <th>Cost</th>
+                    <th>Scalability</th>
+                    <th>Security</th>
+                    <th>Recommendation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="tool-name"><a href="https://chat.openai.com/">ChatGPT</a></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><span class="recommendation high">High</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://claude.ai/">Claude</a></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><span class="recommendation high">High</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://poe.com/">Poe (Quora)</a></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><span class="recommendation medium">Medium</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://gemini.google.com/">Gemini</a></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><span class="recommendation high">High</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://copilot.microsoft.com/">Microsoft Copilot</a></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><span class="recommendation high">High</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="category-analysis">
+            <strong>Category Analysis:</strong> Most mature category. Choose based on current ecosystem (Microsoft/Google) or independent providers (OpenAI/Anthropic).
+        </div>
+
+        <h2>10. Image and Video Generation</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tool</th>
+                    <th>Cost</th>
+                    <th>Scalability</th>
+                    <th>Security</th>
+                    <th>Recommendation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="tool-name"><a href="https://runwayml.com/">Runway</a></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><span class="recommendation medium">Medium</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://www.midjourney.com/">Midjourney</a></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><span class="recommendation medium">Medium</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://openai.com/dall-e">DALL·E</a></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><span class="recommendation medium">Medium</span></td>
+                <tr>
+                    <td class="tool-name"><a href="https://openai.com/sora">Sora (OpenAI)</a></td>
+                    <td><div class="harvey-ball empty"></div></td>
+                    <td><div class="harvey-ball empty"></div></td>
+                    <td><div class="harvey-ball empty"></div></td>
+                    <td><span class="recommendation low">Low</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://www.pika.art/">Pika</a></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><span class="recommendation low">Low</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://www.d-id.com/">D-ID</a></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><span class="recommendation low">Low</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://www.kling.ai/">Kling AI</a></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball quarter"></div></td>
+                    <td><div class="harvey-ball empty"></div></td>
+                    <td><span class="recommendation low">Low</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="category-analysis">
+            <strong>Category Analysis:</strong> Rapidly evolving sector. Start with DALL·E or Midjourney based on specific needs.
+        </div>
+        
+        <h2>11. Coding and Assisted Development</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tool</th>
+                    <th>Cost</th>
+                    <th>Scalability</th>
+                    <th>Security</th>
+                    <th>Recommendation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="tool-name"><a href="https://github.com/features/copilot">GitHub Copilot</a></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><span class="recommendation high">High</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://aws.amazon.com/codewhisperer/">Amazon CodeWhisperer</a></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><span class="recommendation high">High</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://replit.com/ghostwriter">Replit Ghostwriter</a></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><span class="recommendation medium">Medium</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://codeium.com/">Codeium</a></td>
+                    <td><div class="harvey-ball full"></div></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><span class="recommendation high">High</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://www.cursor.so/">Cursor</a></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><span class="recommendation medium">Medium</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://openai.com/blog/openai-codex">Codex (OpenAI)</a></td>
+                    <td><div class="harvey-ball empty"></div></td>
+                    <td><div class="harvey-ball empty"></div></td>
+                    <td><div class="harvey-ball empty"></div></td>
+                    <td><span class="recommendation low">Low</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://www.windsurf.ai/">Windsurf</a></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball quarter"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><span class="recommendation low">Low</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://www.builder.io/">Builder.io</a></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><span class="recommendation medium">Medium</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://www.lovable.so/">Lovable</a></td>
+                    <td><div class="harvey-ball three-quarter"></div></td>
+                    <td><div class="harvey-ball quarter"></div></td>
+                    <td><div class="harvey-ball half"></div></td>
+                    <td><span class="recommendation low">Low</span></td>
+                </tr>
+                <tr>
+                    <td class="tool-name"><a href="https://www.rork.com/">Rork AI</a></td>
+                    <td><div class="harvey-ball quarter"></div></td>
+                    <td><div class="harvey-ball empty"></div></td>
+                    <td><div class="harvey-ball empty"></div></td>
+                    <td><span class="recommendation low">Low</span></td>
+                </tr>
+            </tbody>
+        </table>  
+        <div class="category-analysis">
+            <strong>Category Analysis: </strong> GitHub Copilot or CodeWhisperer are the most mature options for development teams.
+        </div>   
+    </div>
+
+    <button class="back-to-top" onclick="scrollToTop()" title="Go to top">↑</button>
+
+    <script>
+        // Back to top button functionality
+        window.addEventListener('scroll', function() {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add hover effects to sections
+        document.querySelectorAll('.section').forEach(section => {
+            section.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            section.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(-2px)';
+            });
+        });
+    </script>
+</body>
+</html>
